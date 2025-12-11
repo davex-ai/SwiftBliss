@@ -1,8 +1,10 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const wishlistSchema = mongoose.Schema({
-    name: { type: String, required: true},
-    product: {type: mongoose.Schema.Types.ObjectId, ref: "Product"}
-    //i dk what else to add
-})
-module.exports = mongoose.model("WishList", wishlistSchema);
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    products: [
+        { type: mongoose.Schema.Types.ObjectId, ref: "Product" }
+    ]
+}, { timestamps: true });
+
+module.exports = mongoose.model("Wishlist", wishlistSchema);
