@@ -1,16 +1,27 @@
 import Wishlist from "../model/Wishlist";
-import { connectDB } from "./db";
+import { connectDB } from "../utils/db";
 
-export async function addToWishlist({data}) {
-    await connectDB()
-    return await Wishlist.create(data)  
+export async function addToWishlist(userId, productId) {
+    await connectDB();
+
+    return await Wishlist.findOneAndUpdate(
+        { user: userId },
+        { $addToSet: { products: productId } },
+        { new: true, upsert: true }
+    );
 }
 
-export async function removeFromWishlist(id) {
-    await connectDB()
-    return await Wishlist.findByIdAndDelete(id)
+export async function removeFromWishlist(userId, productId) {
+    await connectDB();
+
+    return await Wishlist.findOneAndUpdate(
+        { user: userId },
+        { $pull: { products: productId } },
+        { new: true }
+    );
 }
-export async function getWishlist() {
-    await connectDB()
-    return await Wishlist.findBy()
+
+export async function getWishlist(userId) {
+    await connectDB();
+    return await Wishlist.findOne({ user: userId }).populate("products");
 }

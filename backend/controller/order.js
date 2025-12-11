@@ -1,14 +1,14 @@
 import Order from "../model/Order";
-import { connectDB } from "./db";
+import { connectDB } from "../utils/db";
 
-export async function placeOrdert({data}) {
+export async function placeOrder(data) {
     await connectDB()
     return await Order.create(data)  
 }
 
-export async function getMyOrders() {
+export async function getMyOrders(userId) {
     await connectDB()
-    return await Order.find()
+    return await Order.find({user: userId})
 }
 export async function getOrder(id) {
     await connectDB()
