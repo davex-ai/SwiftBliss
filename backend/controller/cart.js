@@ -37,7 +37,6 @@ export async function updateCartItem(req, res) {
     }
 }
 
-// Get user cart
 export async function getCart(req, res) {
     try {
         const cart = await getUserCart(req.user.id);
@@ -47,7 +46,6 @@ export async function getCart(req, res) {
     }
 }
 
-// Clear cart (optional)
 export async function clearUserCart(req, res) {
     try {
         const cart = await clearCart(req.user.id);
