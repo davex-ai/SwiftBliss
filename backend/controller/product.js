@@ -114,26 +114,45 @@ export async function sortProducts(req, res) {
 
 export async function getReviewsForProduct(req, res) {
     try {
-const product = await Product.findId(req.params.id).select("reviews") 
-if (!product) return res.status(404).json({ message: "Product not found" });
-res.status(200).json(product.reviews || []);
+        const product = await Product.findById(req.params.id).select("reviews");
+
+        if (!product) 
+            return res.status(404).json({ message: "Product not found" });
+
+        res.status(200).json(product.reviews || []);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 }
 
+
 export async function addReview(req, res) {
     try {
-          const { rating, comment } = req.query;
-          if(!product) return res.status(404).json({message: "Product not faound"})
-            const review = {rating, comment, createdAt: new Date()}
-        product.review.push(review)
-        const product = await updateProduct(id, review)
-        res.status(200).json(product);  product.numReviews = product.reviews.length;
-                await product.save();
-        
-                res.status(201).json({ message: "Review added", reviews: product.reviews });       
+        const product = await Product.findById(req.params.id);
+
+        if (!product)
+            return res.status(404).json({ message: "Product not found" });
+
+        const { rating, comment } = req.body;
+
+        const review = {
+            rating,
+            comment,
+            createdAt: new Date(),
+        };
+
+        product.reviews.push(review);
+        product.numReviews = product.reviews.length;
+
+        await product.save();
+
+        res.status(201).json({
+            message: "Review added",
+            reviews: product.reviews
+        });
+
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 }
+
