@@ -5,33 +5,45 @@ import cart from '../assets/i.ri-shopping-cart-line.png';
 import love from '../assets/i.ri-heart-3-line.png';
 
 function Navbar() {
+    const [open, setOpen] = useState(false);
 
-    const [open, setOpen] = useState(false)
-    
-  return (
-    <div className="flex items-center justify-between px-6 py-4 bg-white shadow-sm">
-      <div>
-        <img src={logo} alt="SwiftBites Logo" className="h-10" />
-      </div>
+    return (
+        <nav className="relative px-4 py-4 bg-white shadow-sm z-50">
+            <div className="flex items-center justify-between max-w-7xl mx-auto">
+                <div><img src={logo} alt="SwiftBites Logo" className="h-8 md:h-10" /> </div>
 
-      <div className="space-x-8 hidden sm:flex">
-        <a href="#" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">Home</a>
-        <a href="#" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">About Us</a>
-        <a href="#" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">Products</a>
-        <a href="#" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">Profile</a>
-      </div>
+                <div className="hidden sm:flex items-center space-x-8">
+                    <a href="#" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">Home</a>
+                    <a href="#" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">About Us</a>
+                    <a href="#" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">Products</a>
+                    <a href="#" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">Profile</a>
+                </div>
 
-      <div className="sm:flex items-center space-x-5 hidden"> 
-        <a href="#"><img src={cart} alt="" /></a>
-        <a href="#"><img src={love} alt="" /> </a>
-      </div>
-      <div className="flex flex-col sm:hidden cursor-pointer h-[2%]" onClick={() => setOpen(!open)}>
-        <span className={`w-6 h-1 bg-black m-1 transition-all duration-300 ${open ? 'rotate-45 translate-y-2' : ''}`}></span>
-        <span className={`w-6 h-1 bg-black m-1 transition-all duration-300 ${open ? 'opacity-0' : ''}`}></span>
-        <span className={`w-6 h-1 bg-black m-1 transition-all duration-300 ${open ? 'rotate-45 translate-y-2' : ''}`}></span>
-      </div>
-    </div>
-  );
+                <div className="hidden sm:flex items-center space-x-5">
+                    <a href="#"><img src={cart} alt="Cart" className="h-5 " /> </a>
+                    <a href="#"><img src={love} alt="Wishlist" className="h-5 " /> </a>
+                </div>
+
+                <div className="sm:hidden flex flex-col justify-center cursor-pointer" onClick={() => setOpen(!open)} aria-label="Toggle navigation" >
+                    <span className={`block w-6 h-0.5 bg-gray-800 mb-1 transition-all duration-300 ${open ? 'rotate-45 translate-y-1.5' : ''}`} />
+                    <span className={`block w-6 h-0.5 bg-gray-800 mb-1 transition-all duration-300 ${open ? 'opacity-0' : ''}`} />
+                    <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${open ? '-rotate-45 -translate-y-1.5' : ''}`} />
+                </div>
+            </div>
+
+            <div className={`sm:hidden absolute left-0 right-0 bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out ${open ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}>
+                <div className="flex flex-col px-4 py-4 space-y-4">
+                    <a href="#" className="text-gray-700 hover:text-[#F53E32] font-medium" onClick={() => setOpen(false)}  >Home </a>
+                    <a href="#" className="text-gray-700 hover:text-[#F53E32] font-medium" onClick={() => setOpen(false)}> About Us </a>
+                    <a href="#" className="text-gray-700 hover:text-[#F53E32] font-medium" onClick={() => setOpen(false)}>Products</a>
+                    <a href="#" className="text-gray-700 hover:text-[#F53E32] font-medium" onClick={() => setOpen(false)} >Profile </a>
+                    <a href="#"><img src={cart} alt="Cart" className="h-5 " /> </a>
+                    <a href="#"><img src={love} alt="Wishlist" className="h-5 " /> </a>
+
+                </div>
+            </div>
+        </nav>
+    );
 }
 
 export default Navbar;

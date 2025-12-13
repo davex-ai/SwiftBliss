@@ -4,9 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import foodtrove from './../assets/foodtrove.png'
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-
-
+// import Footer from "../components/Footer";
 
 export default function Register() {
     const [name, setName] = useState("");
@@ -47,11 +45,11 @@ export default function Register() {
                         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full mb-4 p-2 border rounded" />
                     </div>
                     <input type="address" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} className="w-full mb-4 p-2 border rounded" />
-                    <input type="address" placeholder="Phone Number" value={phoneNo} onChange={(e) => setPhoneNo(e.target.value)} className="w-full mb-4 p-2 border rounded" />
+                    <input type="phone" placeholder="Phone Number" value={phoneNo} onChange={(e) => setPhoneNo(e.target.value)} className="w-full mb-4 p-2 border rounded" />
 
                     <div className="flex gap-6">
-                        <input type="password" placeholder="City" value={city} onChange={(e) => setCity(e.target.value)} className="w-full mb-4 p-2 border rounded" />
-                        <input type="email" placeholder="Country" value={country} onChange={(e) => setCountry(e.target.value)} className="w-full mb-4 p-2 border rounded" />
+                        <input type="city" placeholder="City" value={city} onChange={(e) => setCity(e.target.value)} className="w-full mb-4 p-2 border rounded" />
+                        <input type="county" placeholder="Country" value={country} onChange={(e) => setCountry(e.target.value)} className="w-full mb-4 p-2 border rounded" />
                     </div>
                     <div className="flex justify-between items-center">
                         <button type="submit" className="px-4 bg-green-500 text-white p-2 rounded ">Register</button>
@@ -59,7 +57,7 @@ export default function Register() {
                     </div>
                 </form>
             </div>
-        <Footer/>
+        {/* <Footer/> */}
         </div>
     );
 }
