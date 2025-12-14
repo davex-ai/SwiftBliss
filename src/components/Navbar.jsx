@@ -20,7 +20,6 @@ function Navbar() {
                     <a href="#" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">About Us</a>
                     <a href="#" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">Products</a>
                     {user && (<Link to="/profile" className='text-gray-700 hover:text-[#F53E32] hover:underline font-medium'>Profile</Link>)}
-                    <a href="#" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">Profile</a>
                 </div>
 
                 <div className="hidden sm:flex items-center space-x-5">
@@ -40,7 +39,7 @@ function Navbar() {
                     <a href="#" className="text-gray-700 hover:text-[#F53E32] font-medium" onClick={() => setOpen(false)}  >Home </a>
                     <a href="#" className="text-gray-700 hover:text-[#F53E32] font-medium" onClick={() => setOpen(false)}> About Us </a>
                     <a href="#" className="text-gray-700 hover:text-[#F53E32] font-medium" onClick={() => setOpen(false)}>Products</a>
-                    <a href="#" className="text-gray-700 hover:text-[#F53E32] font-medium" onClick={() => setOpen(false)} >Profile </a>
+                    {user && (<Link to="/profile" className='text-gray-700 hover:text-[#F53E32] hover:underline font-medium'>Profile</Link>)}
                     <a href="#"><img src={cart} alt="Cart" className="h-5 " /> </a>
                     <a href="#"><img src={love} alt="Wishlist" className="h-5 " /> </a>
 
