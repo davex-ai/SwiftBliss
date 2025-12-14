@@ -16,15 +16,15 @@ function Navbar() {
                 <div><img src={logo} alt="SwiftBites Logo" className="h-8 md:h-10" /> </div>
 
                 <div className="hidden sm:flex items-center space-x-8">
-                    <a href="#" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">Home</a>
-                    <a href="#" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">About Us</a>
-                    <a href="#" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">Products</a>
+                    <Link to="/" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">Home</Link>
+                    <Link to="/about" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">About Us</Link>
+                    <Link to="/product" className="text-gray-700 hover:text-[#F53E32] hover:underline font-medium">Products</Link>
                     {user && (<Link to="/profile" className='text-gray-700 hover:text-[#F53E32] hover:underline font-medium'>Profile</Link>)}
                 </div>
 
                 <div className="hidden sm:flex items-center space-x-5">
-                    <a href="#"><img src={cart} alt="Cart" className="h-5 " /> </a>
-                    <a href="#"><img src={love} alt="Wishlist" className="h-5 " /> </a>
+                    <Link to="/cart" href="#"><img src={cart} alt="Cart" className="h-5 " /> </Link>
+                    <Link to="/wishlist" href="#"><img src={love} alt="Wishlist" className="h-5 " /> </Link>
                 </div>
 
                 <div className="sm:hidden flex flex-col justify-center cursor-pointer" onClick={() => setOpen(!open)} aria-label="Toggle navigation" >
@@ -36,12 +36,12 @@ function Navbar() {
 
             <div className={`sm:hidden absolute left-0 right-0 bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out ${open ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}>
                 <div className="flex flex-col px-4 py-4 space-y-4">
-                    <a href="#" className="text-gray-700 hover:text-[#F53E32] font-medium" onClick={() => setOpen(false)}  >Home </a>
-                    <a href="#" className="text-gray-700 hover:text-[#F53E32] font-medium" onClick={() => setOpen(false)}> About Us </a>
-                    <a href="#" className="text-gray-700 hover:text-[#F53E32] font-medium" onClick={() => setOpen(false)}>Products</a>
+                    <Link to="" href="#" className="text-gray-700 hover:text-[#F53E32] font-medium" onClick={() => setOpen(false)}  >Home </Link>
+                    <Link to="" href="#" className="text-gray-700 hover:text-[#F53E32] font-medium" onClick={() => setOpen(false)}> About Us </Link>
+                    <Link to="" href="#" className="text-gray-700 hover:text-[#F53E32] font-medium" onClick={() => setOpen(false)}>Products</Link>
                     {user && (<Link to="/profile" className='text-gray-700 hover:text-[#F53E32] hover:underline font-medium'>Profile</Link>)}
-                    <a href="#"><img src={cart} alt="Cart" className="h-5 " /> </a>
-                    <a href="#"><img src={love} alt="Wishlist" className="h-5 " /> </a>
+                    <Link to="" href="#"><img src={cart} alt="Cart" className="h-5 " /> </Link>
+                    <Link to="" href="#"><img src={love} alt="Wishlist" className="h-5 " /> </Link>
 
                 </div>
             </div>
