@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import foodtrove from './../assets/foodtrove.png'
 import Navbar from "../components/Navbar";
 import { useAuth } from "../context/AuthContext";
-// import Footer from "../components/Footer";
+import Footer from "../components/Footer";
 
 export default function Register() {
     const [name, setName] = useState("");
@@ -37,7 +37,7 @@ export default function Register() {
                 <h2>Register</h2>
                 <h2>Home- Register</h2>
             </div>
-            <div className="flex justify-center items-center h-screen bg-gray-100">
+            <div className="flex justify-center items-center h-screen ">
                 <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md w-96" >
                     <img src={foodtrove} className="mx-auto" alt="" />
                     <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} className="w-full mb-4 p-2 border rounded" />
@@ -53,12 +53,12 @@ export default function Register() {
                         <input type="county" placeholder="Country" value={country} onChange={(e) => setCountry(e.target.value)} className="w-full mb-4 p-2 border rounded" />
                     </div>
                     <div className="flex justify-between items-center">
-                        <button type="submit" className="px-4 bg-green-500 text-white p-2 rounded ">Register</button>
+                        <button type="submit" className="px-4 bg-[#F53E32] text-white p-2 rounded ">Register</button>
                         <a href="/login" className="text-gray-500 hover:underline">Have an account</a>
                     </div>
                 </form>
             </div>
-        {/* <Footer/> */}
+        <Footer/>
         </div>
     );
 }
