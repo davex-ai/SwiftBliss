@@ -4,6 +4,7 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/Protected";
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route element={<ProtectedRoute />}>
+          {/* <Route path="/profile" element={<Profile />} /> */}
+          </Route>
         </Routes>
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       </Router>
