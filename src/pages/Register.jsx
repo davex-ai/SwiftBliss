@@ -19,7 +19,7 @@ export default function Register() {
     const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const { data } = await API.post("/register", {name, email, password, address, phoneNo, city, country });
+        const { data } = await API.post("/register", { name, email, password, address, phoneNo, city, country });
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data));
         toast.success("Registration successful!");
